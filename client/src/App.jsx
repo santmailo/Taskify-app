@@ -15,7 +15,7 @@ function App() {
   //getting data in this function
   async function getTasks() {
     axios
-      .get("http://localhost:5000/api/todos")
+      .get("https://taskify-app-ldrc.onrender.com/api/todos")
       .then((response) => {
         console.log(response.data);
         setTasks(response.data);
@@ -31,7 +31,7 @@ function App() {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/todos", {
+      await axios.post("https://taskify-app-ldrc.onrender.com/api/todos", {
         todo: task,
         status: false,
       });
@@ -45,7 +45,9 @@ function App() {
   async function deleteTask(todo) {
     // setLoading(true);
     try {
-      await axios.delete(`http://localhost:5000/api/todos/${todo._id}`);
+      await axios.delete(
+        `https://taskify-app-ldrc.onrender.com/api/todos/${todo._id}`
+      );
     } catch (error) {
       console.error("There was an error making the DELETE request!", error);
     }
@@ -56,7 +58,7 @@ function App() {
   async function taskStatus(todo, checked) {
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/todos/${todo._id}`,
+        `https://taskify-app-ldrc.onrender.com/api/todos/${todo._id}`,
         {
           status: checked,
         }
